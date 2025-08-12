@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ZAPI_INSTANCE = os.getenv("ZAPI_INSTANCE");
-ZAPI_TOKEN = os.getenv("ZAPI_TOKEN"),
-ZAPI_CLIENT_TOKEN = os.getenv("ZAPI_CLIENT_TOKEN"),
+ZAPI_INSTANCE = os.getenv("ZAPI_INSTANCE")
+ZAPI_TOKEN = os.getenv("ZAPI_TOKEN")
+ZAPI_CLIENT_TOKEN = os.getenv("ZAPI_CLIENT_TOKEN")
 
 if not ZAPI_INSTANCE or not ZAPI_TOKEN or not ZAPI_CLIENT_TOKEN:
     raise ValueError("Variáveis da Z-API não configuradas no .env")
