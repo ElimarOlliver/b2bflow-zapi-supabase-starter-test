@@ -31,10 +31,10 @@ def get_contacts(limit: int = 3) -> List[Dict]:
     Campos esperados: nome_contato (text), phone (text).
     """
     try:
-        resp = supabase.table("contacts").select("nome_contato, phone").limit(limit).execute()
+        resp = supabase.table("contacts").select("nome_contato, telefone").limit(limit).execute()
         data = resp.data or []
         # filtro simples para garantir que há nome e phone
-        data = [c for c in data if c.get("nome_contato") and c.get("phone")]
+        data = [c for c in data if c.get("nome_contato") and c.get("telefone")]
         return data
     except Exception as e:
         # Em um projeto real, logue com mais contexto

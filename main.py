@@ -27,7 +27,7 @@ def main() -> None:
 
     for contato in contatos:
         nome = str(contato["nome_contato"]).strip()
-        phone = str(contato["phone"]).strip()
+        phone = str(contato["telefone"]).strip()   # <— AQUI trocou de phone -> telefone
 
         if not phone or phone in enviados:
             continue
