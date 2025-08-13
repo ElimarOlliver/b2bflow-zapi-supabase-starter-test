@@ -28,8 +28,9 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 def get_contacts(limit: int = 3) -> List[Dict]:
     """
     Busca contatos na tabela 'contacts', retornando no máximo `limit` linhas.
-    Campos esperados: nome_contato (text), phone (text).
+    Campos esperados: nome_contato (text), telefone (text).
     """
+
     try:
         resp = supabase.table("contacts").select("nome_contato, telefone").limit(limit).execute()
         data = resp.data or []
