@@ -1,1 +1,24 @@
-.env.example
+# Ambiente virtual
+venv/
+ENV/
+
+# Arquivos de configuração locais
+.env
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Configurações do VSCode / IDEs
+.vscode/
+.idea/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
