@@ -21,9 +21,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ZAPI_INSTANCE_ID = os.getenv("ZAPI_INSTANCE_ID")
-ZAPI_TOKEN = os.getenv("ZAPI_TOKEN")
-ZAPI_CLIENT_TOKEN = os.getenv("ZAPI_CLIENT_TOKEN", "")  # opcional
+ZAPI_INSTANCE_ID = (os.getenv("ZAPI_INSTANCE_ID") or "").strip()
+ZAPI_TOKEN = (os.getenv("ZAPI_TOKEN") or "").strip()
+ZAPI_CLIENT_TOKEN = (os.getenv("ZAPI_CLIENT_TOKEN") or "").strip()
+
 
 if not ZAPI_INSTANCE_ID or not ZAPI_TOKEN:
     raise RuntimeError(
