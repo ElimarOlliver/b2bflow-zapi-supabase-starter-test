@@ -35,16 +35,17 @@ BASE_URL = f"https://api.z-api.io/instances/{ZAPI_INSTANCE_ID}/token/{ZAPI_TOKEN
 def send_text(phone: str, message: str) -> Dict[str, Any]:
     """
     Envia mensagem de texto para um número.
-    Retorna o JSON de resposta da Z-API ou lança exceção se HTTP != 2xx.
+    Retorna o JSON de resposta da Z-API ou lança exceção se HTTP != 2xx, exibindo o corpo da resposta.
     """
     url = f"{BASE_URL}/send-text"
     headers = {"Content-Type": "application/json"}
     if ZAPI_CLIENT_TOKEN:
-        headers["Client-Token"] = ZAPI_CLIENT_TOKEN  # somente se você usa esse recurso
+        headers["Client-Token"] = ZAPI_CLIENT_TOKEN
 
     payload = {"phone": phone, "message": message}
 
     resp = requests.post(url, json=payload, headers=headers, timeout=30)
-    # Se não for 2xx, levanta uma exceção com o payload de erro
-    resp.raise_for_status()
+    if not resp.ok:
+        # mostra status + corpo (ajuda a diagnosticar 404/401/403/422 etc.)
+        raise RuntimeError(f"Z-API error {resp.status_code}: {resp.text}")
     return resp.json()
